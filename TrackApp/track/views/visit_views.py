@@ -1,7 +1,7 @@
 """
 The views.py contains functions to perform codes based on various http requests
 """
-from track.models import Visit, Unit
+from track.models import Unit
 from track.serializers import VisitSerializer
 from rest_framework import generics
 from rest_framework.response import Response
@@ -14,13 +14,6 @@ class VisitView(generics.ListCreateAPIView):
     visit data and creation of visit entry.
     """
     serializer_class = VisitSerializer
-
-    def get_queryset(self):
-        """
-        List all visit data from Visit model. 
-        """
-        visit_objs = Visit.objects.all()
-        return visit_objs
 
     def post(self, request, format=None):
         """
